@@ -12,7 +12,7 @@ import { serverConfigSelectors, useServerConfigStore } from '@/store/serverConfi
 
 import CommunityRecommend from '../CommunityRecommend';
 import SuggestQuestions from '../SuggestQuestions';
-import ModeHeader from './ModeHeader';
+import ModeTag from './ModeTag';
 import SkillInstallBanner from './SkillInstallBanner';
 import StarterList from './StarterList';
 import { useSend } from './useSend';
@@ -50,6 +50,19 @@ const InputArea = () => {
   const showSuggestQuestions =
     inputActiveMode && ['agent', 'group', 'write'].includes(inputActiveMode);
 
+  const extraActionItems = useMemo(
+    () =>
+      inputActiveMode
+        ? [
+            {
+              children: <ModeTag />,
+              key: 'mode-tag',
+            },
+          ]
+        : [],
+    [inputActiveMode],
+  );
+
   return (
     <Flexbox gap={16} style={{ marginBottom: 16 }}>
       <Flexbox style={{ paddingBottom: showSkillBanner ? 32 : 0, position: 'relative' }}>
@@ -79,7 +92,7 @@ const InputArea = () => {
           >
             <DesktopChatInput
               dropdownPlacement="bottomLeft"
-              extenHeaderContent={inputActiveMode ? <ModeHeader /> : undefined}
+              extraActionItems={extraActionItems}
               inputContainerProps={inputContainerProps}
             />
           </ChatInputProvider>
