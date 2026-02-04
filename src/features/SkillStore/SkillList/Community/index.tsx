@@ -11,9 +11,9 @@ import { useToolStore } from '@/store/tool';
 import Empty from '../Empty';
 import Loading from '../Loading';
 import VirtuosoLoading from '../VirtuosoLoading';
+import WantMoreSkills from '../WantMoreSkills';
 import { virtuosoGridStyles } from '../style';
 import Item from './Item';
-import WantMoreSkills from './WantMoreSkills';
 
 export const CommunityList = memo(() => {
   const { t } = useTranslation('setting');
