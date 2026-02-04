@@ -70,6 +70,7 @@ const Item = memo<ItemProps>(
           <DropdownMenu
             items={[
               {
+                danger: true,
                 icon: <Icon icon={Unplug} />,
                 key: 'disconnect',
                 label: t('tools.lobehubSkill.disconnect'),
