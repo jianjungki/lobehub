@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import type { StarterMode } from '@/store/home';
 
 import GroupBlock from '../components/GroupBlock';
-import ScrollShadowWithButton from '../components/ScrollShadowWithButton';
 import List from './List';
 import SuggestQuestionsSkeleton from './Skeleton';
 
@@ -24,11 +23,9 @@ const SuggestQuestions = memo<SuggestQuestionsProps>(({ mode }) => {
 
   return (
     <GroupBlock icon={Lightbulb} title={t('home.suggestQuestions')}>
-      <ScrollShadowWithButton>
-        <Suspense fallback={<SuggestQuestionsSkeleton />}>
-          <List mode={mode} />
-        </Suspense>
-      </ScrollShadowWithButton>
+      <Suspense fallback={<SuggestQuestionsSkeleton />}>
+        <List mode={mode} />
+      </Suspense>
     </GroupBlock>
   );
 });

@@ -1,11 +1,28 @@
 'use client';
 
+import { Flexbox, Skeleton } from '@lobehub/ui';
+import { cssVar } from 'antd-style';
 import { memo } from 'react';
 
-import GroupSkeleton from '../components/GroupSkeleton';
-
 const SuggestQuestionsSkeleton = memo(() => {
-  return <GroupSkeleton height={100} width={200} />;
+  return (
+    <Flexbox gap={12} style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+      {Array.from({ length: 6 }).map((_, i) => (
+        <Skeleton.Button
+          active
+          key={i}
+          size={'large'}
+          style={{
+            borderRadius: cssVar.borderRadiusLG,
+            height: 72,
+            maxHeight: 72,
+            opacity: 0.5,
+            width: '100%',
+          }}
+        />
+      ))}
+    </Flexbox>
+  );
 });
 
 export default SuggestQuestionsSkeleton;
