@@ -2,7 +2,7 @@
 
 import { Block, Flexbox, Icon, Text } from '@lobehub/ui';
 import { cssVar } from 'antd-style';
-import { ArrowUpLeft } from 'lucide-react';
+import { CornerRightUp } from 'lucide-react';
 import { memo, useCallback } from 'react';
 
 import { useChatStore } from '@/store/chat';
@@ -37,7 +37,7 @@ const Item = memo<ItemProps>(({ title, description, prompt }) => {
           <Text ellipsis fontSize={14} style={{ fontWeight: 500 }}>
             {title}
           </Text>
-          <Icon color={cssVar.colorTextQuaternary} icon={ArrowUpLeft} size={14} />
+          <Icon color={cssVar.colorTextQuaternary} icon={CornerRightUp} size={14} />
         </Flexbox>
         <Text color={cssVar.colorTextTertiary} ellipsis={{ rows: 2 }} fontSize={12}>
           {description}
