@@ -444,6 +444,7 @@ export default {
   'setting': 'Settings',
   'share': 'Share',
   'stop': 'Stop',
+  'switch': 'Switch',
   'sync.actions.settings': 'Sync Settings',
   'sync.actions.sync': 'Sync Now',
   'sync.awareness.current': 'Current Device',
