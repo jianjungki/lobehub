@@ -119,6 +119,7 @@ export interface SystemStatus {
    * Remember user's last selected image generation provider
    */
   lastSelectedImageProvider?: string;
+  hasShownChangelog?: boolean;
   latestChangelogId?: string;
   leftPanelWidth: number;
   mobileShowPortal?: boolean;
