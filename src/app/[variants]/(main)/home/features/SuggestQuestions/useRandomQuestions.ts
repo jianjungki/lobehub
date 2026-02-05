@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useCallback, useState } from 'react';
 
 import { type StarterMode } from '@/store/home';
 
@@ -14,24 +14,37 @@ const shuffleArray = <T>(array: T[]): T[] => {
   return shuffled;
 };
 
+const generateQuestions = (mode: StarterMode) => {
+  if (!mode || !['agent', 'group', 'write'].includes(mode)) {
+    return [];
+  }
+
+  const ids = Array.from({ length: QUESTION_COUNT }, (_, i) => i + 1);
+  const shuffled = shuffleArray(ids);
+  return shuffled.slice(0, DISPLAY_COUNT).map((id) => ({
+    id,
+    promptKey: `${mode}.${String(id).padStart(2, '0')}.prompt`,
+    titleKey: `${mode}.${String(id).padStart(2, '0')}.title`,
+  }));
+};
+
 export interface QuestionItem {
   id: number;
   promptKey: string;
   titleKey: string;
 }
 
-export const useRandomQuestions = (mode: StarterMode): QuestionItem[] => {
-  return useMemo(() => {
-    if (!mode || !['agent', 'group', 'write'].includes(mode)) {
-      return [];
-    }
+interface UseRandomQuestionsResult {
+  questions: QuestionItem[];
+  refresh: () => void;
+}
 
-    const ids = Array.from({ length: QUESTION_COUNT }, (_, i) => i + 1);
-    const shuffled = shuffleArray(ids);
-    return shuffled.slice(0, DISPLAY_COUNT).map((id) => ({
-      id,
-      promptKey: `${mode}.${String(id).padStart(2, '0')}.prompt`,
-      titleKey: `${mode}.${String(id).padStart(2, '0')}.title`,
-    }));
+export const useRandomQuestions = (mode: StarterMode): UseRandomQuestionsResult => {
+  const [questions, setQuestions] = useState<QuestionItem[]>(() => generateQuestions(mode));
+
+  const refresh = useCallback(() => {
+    setQuestions(generateQuestions(mode));
   }, [mode]);
+
+  return { questions, refresh };
 };

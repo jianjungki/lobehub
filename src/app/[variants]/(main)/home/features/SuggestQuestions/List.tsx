@@ -4,18 +4,15 @@ import { Flexbox } from '@lobehub/ui';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { type StarterMode } from '@/store/home';
-
 import Item from './Item';
-import { useRandomQuestions } from './useRandomQuestions';
+import { type QuestionItem } from './useRandomQuestions';
 
 interface ListProps {
-  mode: StarterMode;
+  questions: QuestionItem[];
 }
 
-const List = memo<ListProps>(({ mode }) => {
+const List = memo<ListProps>(({ questions }) => {
   const { t } = useTranslation('suggestQuestions');
-  const questions = useRandomQuestions(mode);
 
   if (questions.length === 0) {
     return null;
