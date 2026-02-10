@@ -98,6 +98,7 @@ export interface SystemStatus {
    * Group Agent Builder panel width
    */
   groupAgentBuilderPanelWidth?: number;
+  hasShownChangelog?: boolean;
   hideGemini2_5FlashImagePreviewChineseWarning?: boolean;
   hidePWAInstaller?: boolean;
   hideThreadLimitAlert?: boolean;
@@ -119,7 +120,6 @@ export interface SystemStatus {
    * Remember user's last selected image generation provider
    */
   lastSelectedImageProvider?: string;
-  hasShownChangelog?: boolean;
   latestChangelogId?: string;
   leftPanelWidth: number;
   mobileShowPortal?: boolean;

@@ -31,9 +31,11 @@ const ConfigGroupModal = memo<ModalProps>(({ open, onCancel }) => {
   const sessionGroupItems = useHomeStore(
     (s) =>
       homeAgentListSelectors.agentGroups(s).map((g) => ({
+        createdAt: new Date(),
         id: g.id,
         name: g.name,
         sort: g.sort,
+        updatedAt: new Date(),
       })),
     isEqual,
   );
@@ -51,7 +53,7 @@ const ConfigGroupModal = memo<ModalProps>(({ open, onCancel }) => {
     >
       <Flexbox>
         <SortableList
-          items={sessionGroupItems}
+          items={sessionGroupItems as unknown as SessionGroupItem[]}
           onChange={(items: SessionGroupItem[]) => {
             updateGroupSort(items);
           }}
