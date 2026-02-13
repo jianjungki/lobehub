@@ -44,7 +44,7 @@ const buildActionsMap = (items: MessageActionItemOrDivider[]): Map<string, Messa
       if ('children' in item && item.children) {
         for (const child of item.children) {
           if (child.key) {
-            map.set(`${item.key}.${child.key}`, child as unknown as MessageActionItem);
+            map.set(`${String(item.key)}.${String(child.key)}`, child as unknown as MessageActionItem);
           }
         }
       }
@@ -169,7 +169,7 @@ export const AssistantActionsBar = memo<AssistantActionsBarProps>(
         if (event.keyPath && event.keyPath.length > 1) {
           const parentKey = event.keyPath.at(-1);
           const childKey = event.keyPath[0];
-          const parent = allActions.get(parentKey!);
+          const parent = allActions.get(String(parentKey!));
           if (parent && 'children' in parent && parent.children) {
             const child = parent.children.find((c) => c.key === childKey);
             child?.handleClick?.();
@@ -178,7 +178,7 @@ export const AssistantActionsBar = memo<AssistantActionsBarProps>(
         }
 
         // Handle regular actions
-        const action = allActions.get(event.key);
+        const action = allActions.get(String(event.key));
         action?.handleClick?.();
       },
       [allActions],
