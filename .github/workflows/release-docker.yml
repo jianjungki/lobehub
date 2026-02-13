@@ -13,7 +13,7 @@ concurrency:
 
 env:
   REGISTRY_URL: hub.docker.com
-  REGISTRY_IMAGE: jianjungki/bot-database
+  REGISTRY_IMAGE: jianjungki/lobe-chat-database
   PR_TAG_PREFIX: pr-
 
 jobs:

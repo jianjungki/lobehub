@@ -15,8 +15,8 @@ permissions:
   pull-requests: write
 
 env:
-  REGISTRY_URL: jaworldwide.azurecr.io
-  REGISTRY_IMAGE: jaworldwide.azurecr.io/oneja/ai/bot-database
+  REGISTRY_URL: hub.docker.com
+  REGISTRY_IMAGE: jianjungki/lobe-chat-database
   PR_TAG_PREFIX: pr-
 
 jobs:
