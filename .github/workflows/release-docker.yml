@@ -12,7 +12,6 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  REGISTRY_URL: hub.docker.com
   REGISTRY_IMAGE: jianjungki/lobe-chat-database
   PR_TAG_PREFIX: pr-
 
@@ -54,7 +53,6 @@ jobs:
       - name: Docker login
         uses: docker/login-action@v3
         with:
-          registry: ${{ env.REGISTRY_URL }}
           username: ${{ secrets.CONTAINER_REGISTRY_USER }}
           password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
 
